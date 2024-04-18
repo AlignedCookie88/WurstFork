@@ -17,10 +17,12 @@ import net.wurstclient.settings.SliderSetting;
 @SearchTags({"speed hack"})
 public final class SpeedHackHack extends Hack implements UpdateListener
 {
-
-	private final SliderSetting maxSpeedS = new SliderSetting("Max speed", 0.66F, 0.1, 10, 0.1, SliderSetting.ValueDisplay.DECIMAL);
-	private final SliderSetting boostAmountS = new SliderSetting("Boost amount", 1.8, 0.1, 10, 0.1, SliderSetting.ValueDisplay.DECIMAL);
-
+	
+	private final SliderSetting maxSpeedS = new SliderSetting("Max speed",
+		0.66F, 0.1, 10, 0.1, SliderSetting.ValueDisplay.DECIMAL);
+	private final SliderSetting boostAmountS = new SliderSetting("Boost amount",
+		1.8, 0.1, 10, 0.1, SliderSetting.ValueDisplay.DECIMAL);
+	
 	public SpeedHackHack()
 	{
 		super("SpeedHack");
@@ -56,7 +58,7 @@ public final class SpeedHackHack extends Hack implements UpdateListener
 		// activate mini jump if on ground
 		if(!MC.player.isOnGround())
 			return;
-
+		
 		double boostAmount = boostAmountS.getValue(); // 1.8
 		
 		Vec3d v = MC.player.getVelocity();

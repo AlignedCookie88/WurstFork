@@ -131,6 +131,6 @@ public final class WurstUpdater implements UpdateListener
 	
 	public boolean isOutdated()
 	{
-		return outdated;
-	}
+		return false;
+	} // I'll fix this once this checks for wurstfork updates, not wurst
 }

@@ -66,6 +66,7 @@ public final class WurstLogo
 	private String getVersionString()
 	{
 		String version = "v" + WurstClient.VERSION;
+		version += " F" + WurstClient.FORK_VERSION;
 		version += " MC" + WurstClient.MC_VERSION;
 		
 		if(WurstClient.INSTANCE.getUpdater().isOutdated())

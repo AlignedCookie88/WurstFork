@@ -60,6 +60,7 @@ public enum WurstClient
 	
 	public static final String VERSION = "7.41.2";
 	public static final String MC_VERSION = "1.20.4";
+	public static final String FORK_VERSION = "1.0.0";
 	
 	private WurstAnalytics analytics;
 	private EventManager eventManager;

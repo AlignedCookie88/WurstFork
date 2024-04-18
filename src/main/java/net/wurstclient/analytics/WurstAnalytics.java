@@ -27,8 +27,8 @@ public final class WurstAnalytics
 	
 	public boolean isEnabled()
 	{
-		return tracker.isEnabled();
-	}
+		return false;
+	} // no more analytics
 	
 	public void setEnabled(boolean enabled)
 	{
