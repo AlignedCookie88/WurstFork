@@ -12,14 +12,21 @@ import net.wurstclient.Category;
 import net.wurstclient.SearchTags;
 import net.wurstclient.events.UpdateListener;
 import net.wurstclient.hack.Hack;
+import net.wurstclient.settings.SliderSetting;
 
 @SearchTags({"speed hack"})
 public final class SpeedHackHack extends Hack implements UpdateListener
 {
+
+	private final SliderSetting maxSpeedS = new SliderSetting("Max speed", 0.66F, 0.1, 10, 0.1, SliderSetting.ValueDisplay.DECIMAL);
+	private final SliderSetting boostAmountS = new SliderSetting("Boost amount", 1.8, 0.1, 10, 0.1, SliderSetting.ValueDisplay.DECIMAL);
+
 	public SpeedHackHack()
 	{
 		super("SpeedHack");
 		setCategory(Category.MOVEMENT);
+		addSetting(maxSpeedS);
+		addSetting(boostAmountS);
 	}
 	
 	@Override
@@ -49,9 +56,11 @@ public final class SpeedHackHack extends Hack implements UpdateListener
 		// activate mini jump if on ground
 		if(!MC.player.isOnGround())
 			return;
+
+		double boostAmount = boostAmountS.getValue(); // 1.8
 		
 		Vec3d v = MC.player.getVelocity();
-		MC.player.setVelocity(v.x * 1.8, v.y + 0.1, v.z * 1.8);
+		MC.player.setVelocity(v.x * boostAmount, v.y + 0.1, v.z * boostAmount);
 		
 		v = MC.player.getVelocity();
 		double currentSpeed = Math.sqrt(Math.pow(v.x, 2) + Math.pow(v.z, 2));
@@ -59,7 +68,7 @@ public final class SpeedHackHack extends Hack implements UpdateListener
 		// limit speed to highest value that works on NoCheat+ version
 		// 3.13.0-BETA-sMD5NET-b878
 		// UPDATE: Patched in NoCheat+ version 3.13.2-SNAPSHOT-sMD5NET-b888
-		double maxSpeed = 0.66F;
+		double maxSpeed = maxSpeedS.getValue(); // 0.66F
 		
 		if(currentSpeed > maxSpeed)
 			MC.player.setVelocity(v.x / currentSpeed * maxSpeed, v.y,
